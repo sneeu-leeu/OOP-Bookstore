@@ -18,7 +18,7 @@ class Person
 
   def check_name
     correct = Corrector.new
-    @name = correct.correct_name? @name
+    @name = correct.correct_name @name
   end
 
   binding.pry
