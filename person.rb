@@ -9,10 +9,11 @@ class Person
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @legs = legs
   end
 
   def can_use_services
-    true if of_age? || @parent_permission
+    true if of_age? || @parent_permission(true)
   end
 
   def check_name
