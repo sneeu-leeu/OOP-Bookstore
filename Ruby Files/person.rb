@@ -1,7 +1,7 @@
 require '../corrector'
 
 class Person
-  attr_accessor :name, :age
+  attr_accsessor :name, :age
   attr_reader :id
 
   def initialize(age:, parent_permission: true, name: 'unknown')
@@ -12,12 +12,12 @@ class Person
   end
 
   def can_use_services
-    true if of_age? || @parent_permission
+    true if is_of_age? || @parent_permission
   end
 
   def check_name
     correct = corrector.new
-    @name = correct.correct_name @name
+    @name = correct.correct_name? @name
   end
 
   private
