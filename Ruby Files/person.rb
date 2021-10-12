@@ -1,4 +1,4 @@
-require "../corrector.rb"
+require '../corrector'
 
 class Person
   attr_accessor :name, :age
@@ -12,7 +12,7 @@ class Person
   end
 
   def can_use_services
-    true if is_of_age? || @parent_permission
+    true if of_age? || @parent_permission
   end
 
   def check_name
