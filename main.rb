@@ -1,0 +1,10 @@
+puts 'Welcome To The School Library App'
+
+puts 'Please choose an option by entering a number'
+puts '1 - List All Books'
+puts '2 - List All People'
+puts '3 - Create a User'
+puts '4 - Create a Book'
+puts '5 - Rent a Book'
+puts '6 - List All Rentals for a Given Person (requires id)'
+puts '7 - Exit'
