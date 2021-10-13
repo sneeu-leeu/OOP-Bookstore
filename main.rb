@@ -33,17 +33,54 @@ class App
     choose_action response
   end
 
-  # def choose_action(option)
-  #   case option
-  #   when '1'
+  def choose_action(option)
+    case option
+    when '1'
+      list_books
+    when '2'
+      list_people
+    when '3'
+      create_person
+    when '4'
+      create_book
+    when '5'
+      create_rental
+    when '6'
+      list_rentals_by_id
+    when '7'
+      puts 'Exit'
+  end
 
-  #   when '2'
-  #   when '3'
-  #   when '4'
-  #   when '5'
-  #   when '6'
-  #   when '7'
-  # end
+  def list_books
+    @books.each { |book| puts 'Title: #{book.title}, Author: #{book.author}' }
+    menu
+  end
+
+  def list_people
+    @people.each { |person| puts '[#{class}] Name: #{person.name}, ID: #{person.id}, Age:#{person.age}'}
+    menu
+  end
+
+  def create_person
+    puts 'Do You Want To Create a Student (1) or a Teacher (2)'
+    person_response = gets.chomp
+
+    case person_response
+    when '1'
+      create_person
+    when '2'
+      create_teacher
+    else
+      puts 'Please Choose 1 - Student or 2 - Teacher'
+  end
+end
+
+def create_student
+  print 'Age: '
+  student_age = gets.chomp.to_i
+
+  print 'Name: '
+  student_name = gets.chomp
 
 end
 
