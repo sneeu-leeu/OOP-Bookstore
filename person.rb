@@ -1,18 +1,18 @@
 require_relative 'corrector'
-require 'pry'
 
 class Person
-  attr_accsessor :name, :age
+  attr_accessor :name, :age, :rentals
   attr_reader :id
 
-  def initialize(age,  name = 'unknown', parent_permission: true)
+  def initialize(age, name = 'Unknown', parent_permission: true)
     @id = id
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
-  def can_use_services
+  def can_use_services?
     true if of_age? || @parent_permission
   end
 
@@ -21,7 +21,6 @@ class Person
     @name = correct.correct_name @name
   end
 
-  binding.pry
   private
 
   def of_age?
