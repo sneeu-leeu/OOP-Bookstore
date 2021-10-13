@@ -1,8 +1,7 @@
 require_relative 'corrector'
-require 'pry'
 
 class Person
-  attr_accsessor :name, :age
+  attr_accessor :name, :age
   attr_reader :id
 
   def initialize(age,  name = 'unknown', parent_permission: true)
@@ -21,7 +20,6 @@ class Person
     @name = correct.correct_name @name
   end
 
-  binding.pry
   private
 
   def of_age?
