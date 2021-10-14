@@ -111,4 +111,21 @@ def create_teacher
   choose_action
 end
 
+def create_book
+  print 'Title: '
+  title = gets.chomp
+
+  print 'Author: '
+  author = gets.chomp
+
+  book = Book.new(title, author)
+
+  @books << book
+
+  puts 'book: #{book.tile} created successfully'
+  choose_action
+end
+
+
+
 
