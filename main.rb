@@ -85,7 +85,30 @@ def create_student
   print 'Has Parent Permission? [Y/N]'
   persimmsion_response = gets.chomp.downcase == y
 
-  student = Student.new()
+  student = Student.new(age: age_response, name: name_response, parent_permission: persimmsion_response, classroom: @classroom)
+  @people << student
+
+  puts 'Person #{student_name} created'
+
+  choose_action
+end
+
+def create_teacher
+  print 'Age: '
+  age_response = gets.chomp.to_i
+
+  print 'Name: '
+  name_response = gets.chomp
+
+  print 'Specialization'
+  specialization_response = gets.chomp
+
+  teacher = Teacher.new(age: age_response, name: name_response, specialization: specialization_response)
+
+  @people << teacher
+
+  puts 'Teacher #{teacher.name} created successfully'
+  choose_action
 end
 
 
