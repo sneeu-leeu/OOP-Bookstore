@@ -73,59 +73,99 @@ class App
     else
       puts 'Please Choose 1 - Student or 2 - Teacher'
   end
+
+  def create_student
+    print 'Age: '
+    age_response = gets.chomp.to_i
+
+    print 'Name: '
+    name_response = gets.chomp
+
+    print 'Has Parent Permission? [Y/N]'
+    permission_response = gets.chomp.downcase == y
+
+    student = Student.new(age: age_response, name: name_response, parent_permission: permission_response, classroom: @classroom)
+    @people << student
+
+    puts "Person #{student_name} created"
+
+    choose_action
+  end
+
+  def create_teacher
+    print 'Age: '
+    age_response = gets.chomp.to_i
+
+    print 'Name: '
+    name_response = gets.chomp
+
+    print 'Specialization'
+    specialization_response = gets.chomp
+
+    teacher = Teacher.new(age: age_response, name: name_response, specialization: specialization_response)
+
+    @people << teacher
+
+    puts "Teacher #{teacher.name} created successfully"
+    choose_action
+  end
+
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+
+    print 'Author: '
+    author = gets.chomp
+
+    book = Book.new(title, author)
+
+    @books << book
+
+    puts "book: #{book.tile} created successfully"
+    choose_action
+  end
+
+  def create_rental
+    puts 'Select a Book from the Following list by number'
+    @books.each_with_index { |book, i| puts "#{i} Title: #{book.title}, Author: #{book.author}" }
+
+    book_i = gets.chomp.to_i
+
+    puts 'Select a Person from the following list by number (NOT ID)'
+    @people.each_with_index { |person, i| puts "#{i} Name: #{person.name}, Age: #{person.age}" }
+
+    person_i = gets.chomp.to_i
+
+    puts 
+    print "Date: "
+    date = gets.chomp
+
+    rental = Rental.new(date, @books[book_i], @people[person_i])
+
+    @rental << rental
+
+    puts "Book #{@books[book_i]} rented successfully by #{@people[person_i]}"
+
+    choose_action
+  end
+
+  def list_rentals_by_id
+    print 'ID of person: '
+    id = gets.chomp.to_i
+
+    puts 'Rentals: '
+
+    @rentals.each do |rental|
+      puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" if rental.person.id == id
+    end
+
+    choose_action
+  end
 end
 
-def create_student
-  print 'Age: '
-  age_response = gets.chomp.to_i
-
-  print 'Name: '
-  name_response = gets.chomp
-
-  print 'Has Parent Permission? [Y/N]'
-  persimmsion_response = gets.chomp.downcase == y
-
-  student = Student.new(age: age_response, name: name_response, parent_permission: persimmsion_response, classroom: @classroom)
-  @people << student
-
-  puts 'Person #{student_name} created'
-
-  choose_action
+def main 
+  app = App.new
+  app.run
 end
 
-def create_teacher
-  print 'Age: '
-  age_response = gets.chomp.to_i
-
-  print 'Name: '
-  name_response = gets.chomp
-
-  print 'Specialization'
-  specialization_response = gets.chomp
-
-  teacher = Teacher.new(age: age_response, name: name_response, specialization: specialization_response)
-
-  @people << teacher
-
-  puts 'Teacher #{teacher.name} created successfully'
-  choose_action
-end
-
-def create_book
-  print 'Title: '
-  title = gets.chomp
-
-  print 'Author: '
-  author = gets.chomp
-
-  book = Book.new(title, author)
-
-  @books << book
-
-  puts 'book: #{book.tile} created successfully'
-  choose_action
-end
-
-
-
-
+main
