@@ -30,6 +30,7 @@ class App
     puts '5 - Rent a Book'
     puts '6 - List All Rentals for a Given Person (requires id)'
     puts '7 - Exit'
+    puts
     response = gets.chomp
     choose_action response
   end
@@ -54,12 +55,12 @@ class App
   end
 
   def list_books
-    @books.each { |book| puts 'Title: #{book.title}, Author: #{book.author}' }
+    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
     menu
   end
 
   def list_people
-    @people.each { |person| puts '[#{class}] Name: #{person.name}, ID: #{person.id}, Age:#{person.age}'}
+    @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, age: #{person.age}" }
     menu
   end
 
@@ -84,15 +85,15 @@ class App
     print 'Name: '
     name_response = gets.chomp
 
-    print 'Has Parent Permission? [Y/N]'
+    print 'Has Parent Permission? [Y/N]: '
     permission_response = gets.chomp.downcase == 'y'
 
     student = Student.new(age: age_response, name: name_response, parent_permission: permission_response, classroom: @classroom)
     @people << student
 
-    puts "Person #{student_name} created"
+    puts "Student #{name_response} created succesfully"
 
-    choose_action
+    menu
   end
 
   def create_teacher
@@ -102,7 +103,7 @@ class App
     print 'Name: '
     name_response = gets.chomp
 
-    print 'Specialization'
+    print 'Specialization: '
     specialization_response = gets.chomp
 
     teacher = Teacher.new(age: age_response, name: name_response, specialization: specialization_response)
