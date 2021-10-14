@@ -146,7 +146,7 @@ class App
 
     rental = Rental.new(date, @books[book_i], @people[person_i])
 
-    @rental << rental
+    @rentals << rental
 
     puts "Book #{@books[book_i]} rented successfully by #{@people[person_i]}"
 
