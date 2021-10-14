@@ -69,7 +69,7 @@ class App
 
     case person_response
     when '1'
-      create_person
+      create_student
     when '2'
       create_teacher
     else
@@ -85,7 +85,7 @@ class App
     name_response = gets.chomp
 
     print 'Has Parent Permission? [Y/N]'
-    permission_response = gets.chomp.downcase == y
+    permission_response = gets.chomp.downcase == 'y'
 
     student = Student.new(age: age_response, name: name_response, parent_permission: permission_response, classroom: @classroom)
     @people << student
