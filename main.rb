@@ -34,7 +34,7 @@ class App
     choose_action response
   end
 
-  def choose_action(option)
+  def choose_action(option) # rubocop:todo Metrics/CyclomaticComplexity
     case option
     when '1'
       list_books
@@ -54,12 +54,12 @@ class App
   end
 
   def list_books
-    @books.each { |book| puts 'Title: #{book.title}, Author: #{book.author}' }
+    @books.each { |_book| puts "Title: #{book.title}, Author: #{book.author}" }
     menu
   end
 
   def list_people
-    @people.each { |person| puts '[#{class}] Name: #{person.name}, ID: #{person.id}, Age:#{person.age}'}
+    @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, age: #{person.age}" }
     menu
   end
 
@@ -87,7 +87,8 @@ class App
     print 'Has Parent Permission? [Y/N]'
     permission_response = gets.chomp.downcase == y
 
-    student = Student.new(age: age_response, name: name_response, parent_permission: permission_response, classroom: @classroom)
+    student = Student.new(age: age_response, name: name_response,
+                          parent_permission: permission_response, classroom: @classroom)
     @people << student
 
     puts "Person #{student_name} created"
@@ -139,8 +140,8 @@ class App
 
     person_i = gets.chomp.to_i
 
-    puts 
-    print "Date: "
+    puts
+    print 'Date: '
     date = gets.chomp
 
     rental = Rental.new(date, @books[book_i], @people[person_i])
@@ -166,9 +167,9 @@ class App
   end
 end
 
-def main 
+def main
   app = App.new
   app.run
 end
 
-main()
+main
