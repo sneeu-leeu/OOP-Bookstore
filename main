@@ -50,6 +50,7 @@ class App
       list_rentals_by_id
     when '7'
       puts 'Exit'
+    end
   end
 
   def list_books
@@ -73,6 +74,7 @@ class App
       create_teacher
     else
       puts 'Please Choose 1 - Student or 2 - Teacher'
+    end
   end
 
   def create_student
@@ -166,7 +168,7 @@ end
 
 def main 
   app = App.new
-  app.run
+  app.execute
 end
 
-main()
+main
