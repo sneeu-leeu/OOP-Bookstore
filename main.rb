@@ -77,11 +77,15 @@ end
 
 def create_student
   print 'Age: '
-  student_age = gets.chomp.to_i
+  age_response = gets.chomp.to_i
 
   print 'Name: '
-  student_name = gets.chomp
+  name_response = gets.chomp
 
+  print 'Has Parent Permission? [Y/N]'
+  persimmsion_response = gets.chomp.downcase == y
+
+  student = Student.new()
 end
 
 
