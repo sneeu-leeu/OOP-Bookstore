@@ -110,7 +110,7 @@ class App
     @people << teacher
 
     puts "Teacher #{teacher.name} created successfully"
-    choose_action
+    menu
   end
 
   def create_book
@@ -125,7 +125,7 @@ class App
     @books << book
 
     puts "book: #{book.tile} created successfully"
-    choose_action
+    menu
   end
 
   def create_rental
@@ -149,7 +149,7 @@ class App
 
     puts "Book #{@books[book_i]} rented successfully by #{@people[person_i]}"
 
-    choose_action
+    menu
   end
 
   def list_rentals_by_id
@@ -162,7 +162,7 @@ class App
       puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" if rental.person.id == id
     end
 
-    choose_action
+    menu
   end
 end
 
