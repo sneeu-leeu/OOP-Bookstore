@@ -125,7 +125,7 @@ class App
 
     @books << book
 
-    puts "book: #{book.tile} created successfully"
+    puts "Book: '#{book.title}' created successfully"
     menu
   end
 
