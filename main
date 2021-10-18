@@ -1,10 +1,6 @@
 #!/usr/bin/env ruby
-require_relative 'person'
-require_relative 'student'
-require_relative 'teacher'
 require_relative 'classroom'
-require_relative 'book'
-require_relative 'rental'
+require_relative 'display'
 
 class App
   attr_accessor :people, :books
@@ -13,6 +9,7 @@ class App
     @people = []
     @books = []
     @rentals = []
+    @displays = Display.new(@books, @people, @rentals)
   end
 
   def execute
@@ -38,9 +35,9 @@ class App
   def choose_action(option) # rubocop:todo Metrics/CyclomaticComplexity
     case option
     when '1'
-      list_books
+      @display.books
     when '2'
-      list_people
+      @display.people
     when '3'
       create_person
     when '4'
@@ -48,20 +45,10 @@ class App
     when '5'
       create_rental
     when '6'
-      list_rentals_by_id
+      @display.rentals
     when '7'
       puts 'Exit'
     end
-  end
-
-  def list_books
-    @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
-    menu
-  end
-
-  def list_people
-    @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, age: #{person.age}" }
-    menu
   end
 
   def create_person
@@ -150,19 +137,6 @@ class App
     @rentals << rental
 
     puts "Book #{@books[book_i]} rented successfully by #{@people[person_i]}"
-
-    menu
-  end
-
-  def list_rentals_by_id
-    print 'ID of person: '
-    id = gets.chomp.to_i
-
-    puts 'Rentals: '
-
-    @rentals.each do |rental|
-      puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" if rental.person.id == id
-    end
 
     menu
   end
