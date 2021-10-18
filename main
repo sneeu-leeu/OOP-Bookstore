@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require_relative 'classroom'
 require_relative 'display'
+require_relative 'creator'
 
 class App
   attr_accessor :people, :books
@@ -9,7 +10,7 @@ class App
     @people = []
     @books = []
     @rentals = []
-    @displays = Display.new(@books, @people, @rentals)
+    @displays = Display.new(@books, @rentals, @people)
   end
 
   def execute
@@ -35,17 +36,23 @@ class App
   def choose_action(option) # rubocop:todo Metrics/CyclomaticComplexity
     case option
     when '1'
-      @display.books
+      @displays.books
+      menu
     when '2'
-      @display.people
+      @displays.people
+      menu
     when '3'
       create_person
+      menu
     when '4'
-      create_book
+      @books << Creator.book
+      menu
     when '5'
-      create_rental
+      @rentals << Creator.rental(@books, @people)
+      menu
     when '6'
-      @display.rentals
+      @displays.rentals
+      menu
     when '7'
       puts 'Exit'
     end
@@ -57,88 +64,12 @@ class App
 
     case person_response
     when '1'
-      create_student
+      @people << Creator.student
     when '2'
-      create_teacher
+      @people << Creator.teacher
     else
       puts 'Please Choose 1 - Student or 2 - Teacher'
     end
-  end
-
-  def create_student
-    print 'Age: '
-    age_response = gets.chomp.to_i
-
-    print 'Name: '
-    name_response = gets.chomp
-
-    print 'Has Parent Permission? [Y/N]: '
-    permission_response = gets.chomp.downcase == 'y'
-
-    student = Student.new(age: age_response, name: name_response, parent_permission: permission_response,
-                          classroom: @classroom)
-    @people << student
-
-    puts "Student #{name_response} created succesfully"
-
-    menu
-  end
-
-  def create_teacher
-    print 'Age: '
-    age_response = gets.chomp.to_i
-
-    print 'Name: '
-    name_response = gets.chomp
-
-    print 'Specialization: '
-    specialization_response = gets.chomp
-
-    teacher = Teacher.new(age: age_response, name: name_response, specialization: specialization_response)
-
-    @people << teacher
-
-    puts "Teacher #{teacher.name} created successfully"
-    menu
-  end
-
-  def create_book
-    print 'Title: '
-    title = gets.chomp
-
-    print 'Author: '
-    author = gets.chomp
-
-    book = Book.new(title, author)
-
-    @books << book
-
-    puts "Book: '#{book.title}' created successfully"
-    menu
-  end
-
-  def create_rental
-    puts 'Select a Book from the Following list by number'
-    @books.each_with_index { |book, i| puts "#{i} Title: #{book.title}, Author: #{book.author}" }
-
-    book_i = gets.chomp.to_i
-
-    puts 'Select a Person from the following list by number (NOT ID)'
-    @people.each_with_index { |person, i| puts "#{i} Name: #{person.name}, Age: #{person.age}" }
-
-    person_i = gets.chomp.to_i
-
-    puts
-    print 'Date: '
-    date = gets.chomp
-
-    rental = Rental.new(date, @books[book_i], @people[person_i])
-
-    @rentals << rental
-
-    puts "Book #{@books[book_i]} rented successfully by #{@people[person_i]}"
-
-    menu
   end
 end
 

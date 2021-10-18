@@ -31,7 +31,7 @@ class Creator
 
     puts "Teacher #{teacher.name} created successfully"
 
-    teacher
+    return teacher
   end
 
   def self.book
@@ -43,17 +43,19 @@ class Creator
 
     book = Book.new(title, author)
 
-    "Book: '#{book.title}' created successfully"
+    puts "Book: '#{book.title}' created successfully"
 
-    book
+    return book
   end
 
-  def self.rental
+  def self.rental(books, people)
     puts 'Select a Book from the Following list by number'
-    @books.each_with_index { |book, i| puts "#{i} Title: #{book.title}, Author: #{book.author}" }
+    books.each_with_index { |book, i| puts "#{i} Title: #{book.title}, Author: #{book.author}" }
+
+    book_i = gets.chomp.to_i
 
     puts 'Select a Person from the following list by number (NOT ID)'
-    @people.each_with_index { |person, i| puts "#{i} Name: #{person.name}, Age: #{person.age}" }
+    people.each_with_index { |person, i| puts "#{i} Name: #{person.name}, Age: #{person.age}" }
 
     person_i = gets.chomp.to_i
 
@@ -61,9 +63,9 @@ class Creator
     print 'Date: '
     date = gets.chomp
 
-    rental = Rental.new(date, @books[book_i], @people[person_i])
+    rental = Rental.new(date, books[book_i], people[person_i])
     
-    puts "Book #{@books[book_i]} rented successfully by #{@people[person_i]}"
+    puts "Book rented successfully"
 
     rental  
   end
