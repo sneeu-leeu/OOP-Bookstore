@@ -1,17 +1,17 @@
 #!/usr/bin/env ruby
 require_relative 'app'
 
-
-def main
+# rubocop:todo Metrics/MethodLength
+def main # rubocop:todo Metrics/CyclomaticComplexity, Metrics/MethodLength
   app = App.new
   puts 'Welcome To The School Library App'
-  loop do 
-      app.menu
+  loop do
+    app.menu
     case gets.chomp
     when '1'
       app.books = app.displays.books
     when '2'
-    app.people = app.displays.people
+      app.people = app.displays.people
     when '3'
       app.create_person
     when '4'
@@ -26,5 +26,6 @@ def main
     end
   end
 end
+# rubocop:enable Metrics/MethodLength
 
 main

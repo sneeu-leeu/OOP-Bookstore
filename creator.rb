@@ -31,7 +31,7 @@ class Creator
 
     puts "Teacher #{teacher.name} created successfully"
 
-    return teacher
+    teacher
   end
 
   def self.book
@@ -45,7 +45,7 @@ class Creator
 
     puts "Book: '#{book.title}' created successfully"
 
-    return book
+    book
   end
 
   def self.rental(books, people)
@@ -64,9 +64,9 @@ class Creator
     date = gets.chomp
 
     rental = Rental.new(date, books[book_i], people[person_i])
-    
-    puts "Book rented successfully"
 
-    rental  
+    puts 'Book rented successfully'
+
+    rental
   end
 end
