@@ -3,7 +3,7 @@ require_relative 'display'
 require_relative 'creator'
 
 class App
-  attr_accessor :people, :books
+  attr_accessor :people, :books, :displays, :rentals
 
   def initialize
     @people = []
@@ -12,45 +12,23 @@ class App
     @displays = Display.new(@books, @rentals, @people)
   end
 
-  def execute
-    puts 'Welcome To The School Library App'
-    menu
-  end
-
   def menu
     puts
-    puts 'Please choose an option by entering a number'
-    puts '1 - List All Books'
-    puts '2 - List All People'
-    puts '3 - Create a Person'
-    puts '4 - Create a Book'
-    puts '5 - Rent a Book'
-    puts '6 - List All Rentals for a Given Person (requires id)'
-    puts '7 - Exit'
+    puts [
+    'Please choose an option by entering a number',
+    '1 - List All Books',
+    '2 - List All People',
+    '3 - Create a Person',
+    '4 - Create a Book',
+    '5 - Rent a Book',
+    '6 - List All Rentals for a Given Person (requires id)',
+    '7 - Exit']
     puts
-    response = gets.chomp
-    choose_action response
-  end
 
-  def choose_action(option) # rubocop:todo Metrics/CyclomaticComplexity
-    case option
-    when '1'
-      @displays.books
-    when '2'
-      @displays.people
-    when '3'
-      create_person
-    when '4'
-      @books << Creator.book
-    when '5'
-      @rentals << Creator.rental(@books, @people)
-    when '6'
-      @displays.rentals
-    when '7'
-      puts 'Exit'
-      return
-    end
-    menu
+  end
+ 
+  def create_rental
+    @rentals << Creator.rental(@books, @people)   
   end
 
   def create_person

@@ -1,13 +1,30 @@
 #!/usr/bin/env ruby
-require_relative 'classroom'
-require_relative 'display'
-require_relative 'creator'
-
+require_relative 'app'
 
 
 def main
   app = App.new
-  app.execute
+  puts 'Welcome To The School Library App'
+  loop do 
+      app.menu
+    case gets.chomp
+    when '1'
+      app.books = app.displays.books
+    when '2'
+    app.people = app.displays.people
+    when '3'
+      app.create_person
+    when '4'
+      app.books << Creator.book
+    when '5'
+      app.create_rental
+    when '6'
+      app.displays.rentals
+    when '7'
+      puts 'Exit'
+      return
+    end
+  end
 end
 
 main
