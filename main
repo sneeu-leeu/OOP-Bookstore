@@ -37,25 +37,21 @@ class App
     case option
     when '1'
       @displays.books
-      menu
     when '2'
       @displays.people
-      menu
     when '3'
       create_person
-      menu
     when '4'
       @books << Creator.book
-      menu
     when '5'
       @rentals << Creator.rental(@books, @people)
-      menu
     when '6'
       @displays.rentals
-      menu
     when '7'
       puts 'Exit'
+      return
     end
+    menu
   end
 
   def create_person
