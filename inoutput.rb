@@ -1,6 +1,6 @@
-require_relative 'file'
-require_relative 'input'
-require_relative 'output'
+require_relative './file'
+require_relative './input'
+require_relative './output'
 
 class InOutPut
 
@@ -12,7 +12,7 @@ class InOutPut
     @hash = @output.read || []
   end
 
-  def write(info)
+  def write(content)
     @hash << content
     @input.write(@hash)
   end

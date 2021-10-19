@@ -9,7 +9,7 @@ class Output
     JSON.parse(File.read(@file_name))
       true
     rescue JSON::ParserError => e
-      flase
+      false
   end
 
   def read

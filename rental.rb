@@ -11,11 +11,12 @@ class Rental
     person.rentals << self unless person.rentals.include?(self)
   end
 
-  def to_s
-    [
-      @date,
-      book.to_s.map{ |item| item},
-      person.to_s.map{ |item| item}
-    ]
+  def to_hash
+    {
+      'date' => @date,
+      'title' => @book.title,
+      'author' => @book.author,
+      'person-id' => @person.id
+    }
   end
 end
