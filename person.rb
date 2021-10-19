@@ -21,6 +21,14 @@ class Person
     @name = correct.correct_name @name
   end
 
+  def to_s
+    [
+      @name,
+      @age,
+      @id
+    ]
+  end
+
   private
 
   def of_age?
