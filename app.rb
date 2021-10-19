@@ -7,9 +7,12 @@ class App
   attr_accessor :people, :books, :displays, :rentals
 
   def initialize
+    @people_file = Inoutput.new("people.json")
+    @booksFile = Inoutput.new("books.json")
+    @rentalsFile = Inoutput.new("rentals.json") 
     @people = []
     @books = []
-    @rentals = []
+    @rental = []
     @displays = Display.new(@books, @rentals, @people)
   end
 
@@ -28,7 +31,14 @@ class App
     puts
   end
 
+  def create_book
+    new_book = Creator.book
+    @books_file.write(new_book.to_s)
+    @books << new_book
+  end
+
   def create_rental
+    @rentalsFile.write(Create.rental(@books, @people).to_s)
     @rentals << Creator.rental(@books, @people)
   end
 
@@ -36,11 +46,17 @@ class App
     puts 'Do You Want To Create a Student (1) or a Teacher (2)'
     person_response = gets.chomp
 
+    new_person = nil
+
     case person_response
     when '1'
-      @people << Creator.student
+      new_person = Creator.student
+      @people_file.write(new_person.to_s)
+      @people << new_person
     when '2'
-      @people << Creator.teacher
+      new_person = Creator.teacher
+      @peopleFile.write(new_person.to_s)
+      @people << new_person
     else
       puts 'Please Choose 1 - Student or 2 - Teacher'
     end
