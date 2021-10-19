@@ -19,5 +19,3 @@ class InOutPut
   end
 end
 
-i_o = InOutPut.new("TJTiddies.txt")
-puts i_o.read
