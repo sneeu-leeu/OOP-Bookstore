@@ -17,7 +17,7 @@ class Creator
     puts "Student #{name_response} created succesfully"
       file = File.open('people.json')
       data_file = JSON.parse(file.read())
-      data_file << {name: student.name, age: student.age, parent_permission: permission_response}
+      data_file << {profession: "Student", id: student.id, name: student.name, age: student.age, parent_permission: permission_response}
       File.write('people.json', JSON.generate(data_file))
     student
   end
@@ -35,10 +35,10 @@ class Creator
     teacher = Teacher.new(age: age_response, name: name_response, specialization: specialization_response)
 
     puts "Teacher #{teacher.name} created successfully"
-      file = File.open('people.json')
+    file = File.open('people.json')
       data_file = JSON.parse(file.read())
-      data_file << teacher
-      File.write('people.json', JSON.generate(teacher))
+      data_file << {profession: "Teacher", id: teacher.id, name: teacher.name, age: teacher.age, specialization: specialization_response}
+      File.write('people.json', JSON.generate(data_file))
     teacher
   end
 
