@@ -1,1 +1,24 @@
-[{ "name": "caleb", "age": 33, "parent_permission": false }]
+[
+  { "name": "caleb", "age": 33, "parent_permission": false },
+  {
+    "profession": "Student",
+    "id": 89,
+    "name": "caleb",
+    "age": 33,
+    "parent_permission": true
+  },
+  {
+    "profession": "Teacher",
+    "id": 77,
+    "name": "techer",
+    "age": 44,
+    "specialization": "maths"
+  },
+  {
+    "profession": "Student",
+    "id": 26,
+    "name": "calbe",
+    "age": 33,
+    "parent_permission": true
+  }
+]
