@@ -1,3 +1,5 @@
+require 'json'
+
 class Creator
   def self.student
     print 'Age: '
@@ -13,7 +15,10 @@ class Creator
                           classroom: @classroom)
 
     puts "Student #{name_response} created succesfully"
-
+      file = File.open('people.json')
+      data_file = JSON.parse(file.read())
+      data_file << {name: student.name, age: student.age, parent_permission: permission_response}
+      File.write('people.json', JSON.generate(data_file))
     student
   end
 
@@ -30,7 +35,10 @@ class Creator
     teacher = Teacher.new(age: age_response, name: name_response, specialization: specialization_response)
 
     puts "Teacher #{teacher.name} created successfully"
-
+      file = File.open('people.json')
+      data_file = JSON.parse(file.read())
+      data_file << teacher
+      File.write('people.json', JSON.generate(teacher))
     teacher
   end
 
