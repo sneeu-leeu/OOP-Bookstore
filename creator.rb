@@ -52,7 +52,10 @@ class Creator
     book = Book.new(title, author)
 
     puts "Book: '#{book.title}' created successfully"
-
+     file = File.open('books.json')
+      data_file = JSON.parse(file.read())
+      data_file << {title: book.title, author: book.author}
+      File.write('books.json', JSON.generate(data_file))
     book
   end
 
