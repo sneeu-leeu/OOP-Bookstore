@@ -13,7 +13,7 @@ class App
     @people = []
     @books = []
     @rental = []
-    @displays = Display.new(@books, @rentals, @people)
+    @displays = Display.new(@books, @rental, @people)
   end
 
   def menu
@@ -32,14 +32,13 @@ class App
   end
 
   def create_book
-    new_book = Creator.book
-    @books_file.write(new_book.to_s)
-    @books << new_book
+    new_rental = Creator.rental(@books, @people)
+    @rentalsFile.write(new_rental.to_s)
+    @rental << new_rental
   end
 
   def create_rental
-    @rentalsFile.write(Create.rental(@books, @people).to_s)
-    @rentals << Creator.rental(@books, @people)
+    @rentalsFile.write(Creator.rental(@books, @people).to_s)
   end
 
   def create_person
@@ -55,7 +54,7 @@ class App
       @people << new_person
     when '2'
       new_person = Creator.teacher
-      @peopleFile.write(new_person.to_s)
+      @people_file.write(new_person.to_s)
       @people << new_person
     else
       puts 'Please Choose 1 - Student or 2 - Teacher'
