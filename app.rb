@@ -1,6 +1,7 @@
 require_relative 'classroom'
 require_relative 'display'
 require_relative 'creator'
+require_relative 'inoutput'
 
 class App
   attr_accessor :people, :books, :displays, :rentals
