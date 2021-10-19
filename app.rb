@@ -7,9 +7,9 @@ class App
   attr_accessor :people, :books, :displays, :rentals
 
   def initialize
-    @people_file = Inoutput.new("people.json")
-    @booksFile = Inoutput.new("books.json")
-    @rentalsFile = Inoutput.new("rentals.json") 
+    @people_file = InOutPut.new("people.json")
+    @booksFile = InOutPut.new("books.json")
+    @rentalsFile = InOutPut.new("rentals.json") 
     @people = []
     @books = []
     @rental = []

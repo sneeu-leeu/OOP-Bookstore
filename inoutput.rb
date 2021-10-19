@@ -1,6 +1,6 @@
-require_relative './file'
-require_relative './input'
-require_relative './output'
+require_relative 'file'
+require_relative 'input'
+require_relative 'output'
 
 class InOutPut
 
@@ -18,3 +18,6 @@ class InOutPut
     @output.read
   end
 end
+
+i_o = InOutPut.new("TJTiddies.txt")
+puts i_o.read
