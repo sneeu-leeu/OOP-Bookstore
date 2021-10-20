@@ -5,14 +5,14 @@ class Convertor
  def self.people_h_to_ar(arr)
     i_array = arr.map do | i |
         case i["type"]
-        when 'teacher'
+        when 'Teacher'
         Teacher.new(
             age: i["age"],
             specialization: i["specialization"],
             name: i["name"],
             id: i["id"]
             )
-        when 'student'
+        when 'Student'
         Student.new(
             age: i["age"],
             name: i["name"],
@@ -24,9 +24,12 @@ class Convertor
     i_array.empty? ? [] : i_array
  end
 
- def self.hash_to_books_arr(arr)
+  def self.hash_to_books_arr(arr)
     instance_arr = arr.map do |item|
-      Book.new(item["title"],item["author"])
+      Book.new(
+          item["title"],
+          item["author"]
+        )
     end
   end
 
