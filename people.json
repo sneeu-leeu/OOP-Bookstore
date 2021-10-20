@@ -1,1 +1,9 @@
-[{"type":"Student","name":"ssss","age":0,"parent_permission":true,"id":98}]
+[
+  {
+    "type": "Student",
+    "name": "ssss",
+    "age": 0,
+    "parent_permission": true,
+    "id": 98
+  }
+]
