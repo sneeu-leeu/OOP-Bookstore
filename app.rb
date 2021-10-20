@@ -1,15 +1,21 @@
 require_relative 'classroom'
 require_relative 'display'
 require_relative 'creator'
+require_relative 'inoutput'
+require_relative 'convertor'
 
 class App
   attr_accessor :people, :books, :displays, :rentals
 
   def initialize
-    @people = []
-    @books = []
-    @rentals = []
-    @displays = Display.new(@books, @rentals, @people)
+    @people_io = InOutPut.new('people.json')
+    @books_io = InOutPut.new('books.json')
+    @rentals_io = InOutPut.new('rentals.json')
+
+    @people = Convertor.people_h_to_ar @people_io.read
+    @books = Convertor.hash_to_books_arr @books_io.read
+    @rental = Convertor.rentals_h_to_r @rentals_io.read, @books, @people
+    @displays = Display.new(@books, @rental, @people)
   end
 
   def menu
@@ -27,8 +33,16 @@ class App
     puts
   end
 
+  def create_book
+    new_book = Creator.book
+    @books << new_book
+    @books_io.write(new_book.to_hash)
+  end
+
   def create_rental
-    @rentals << Creator.rental(@books, @people)
+    new_rental = Creator.rental(@books, @people)
+    @rental << new_rental
+    @rentals_io.write(new_rental.to_hash)
   end
 
   def create_person
@@ -37,9 +51,13 @@ class App
 
     case person_response
     when '1'
-      @people << Creator.student
+      new_person = Creator.student
+      @people_io.write(new_person.to_hash)
+      @people << new_person
     when '2'
-      @people << Creator.teacher
+      new_person = Creator.teacher
+      @people_io.write(new_person.to_hash)
+      @people << new_person
     else
       puts 'Please Choose 1 - Student or 2 - Teacher'
     end

@@ -15,11 +15,11 @@ def main # rubocop:todo Metrics/CyclomaticComplexity, Metrics/MethodLength
     when '3'
       app.create_person
     when '4'
-      app.books << Creator.book
+      app.create_book
     when '5'
       app.create_rental
     when '6'
-      app.displays.rentals
+      app.displays.rental
     when '7'
       puts 'Exit'
       return

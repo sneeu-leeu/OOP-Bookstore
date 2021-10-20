@@ -1,3 +1,5 @@
+require 'json'
+
 class Creator
   def self.student
     print 'Age: '
@@ -40,7 +42,6 @@ class Creator
 
     print 'Author: '
     author = gets.chomp
-
     book = Book.new(title, author)
 
     puts "Book: '#{book.title}' created successfully"

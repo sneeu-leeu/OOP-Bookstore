@@ -7,7 +7,7 @@
 - Add new students or teachers.
 - Add new books.
 - Save records of who borrowed a given book and when.
-> And all of this will be built in a beautiful and well-organized way! 
+  > And all of this will be built in a beautiful and well-organized way!
 
 ### Milestone 1:
 
@@ -22,10 +22,12 @@
 - Add new method to person that validates name.
 
 ## Milestone 3:
+
 - Implement several relationships between classes.
 - Create Classroom, Book and Rental classes.
 
 ## Milestone 4:
+
 - Create a main.rb file that will serve as your console app entry-point.
 - In main.rb define the entry point, which will be a method called main that is invoked at the end of the file.
 
@@ -37,17 +39,17 @@
 
 To get a local copy up and running:
 
-* Clone this repo with:
+- Clone this repo with:
 
-    ```bash
-    git clone https://github.com/sneeu-leeu/OOP-Bookstore
-    ```
+  ```bash
+  git clone https://github.com/sneeu-leeu/OOP-Bookstore
+  ```
 
-* Navigate to the folder/directory
+- Navigate to the folder/directory
 
-    ```bash
-    cd OOP-Bookstore
-    ```
+  ```bash
+  cd OOP-Bookstore
+  ```
 
 ## Authors
 
@@ -59,6 +61,11 @@ To get a local copy up and running:
 
 - LinkedIn: [Stephan Annandale](https://www.linkedin.com/in/stephan-annandale-a4b4931a9/)
 
+👤 **Anderson Caleb**
+
+- GitHub: [@Andersonlebon](https://github.com/andersonlebon)
+- Twitter: [@BuyananaCaleb](https://twitter.com/BuyananaCaleb)
+- LinkedIn: [Anderson Caleb](https://www.linkedin.com/in/anderson-caleb-915343209/)
 
 ## 🤝 Contributing
 
