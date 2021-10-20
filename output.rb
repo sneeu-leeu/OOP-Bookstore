@@ -8,7 +8,7 @@ class Output
   def json_working?
     JSON.parse(File.read(@file_name))
     true
-  rescue JSON::ParserError => e
+  rescue JSON::ParserError => e # rubocop:todo Lint/UselessAssignment
     false
   end
 

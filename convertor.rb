@@ -26,7 +26,7 @@ class Convertor
   end
 
   def self.hash_to_books_arr(arr)
-    instance_arr = arr.map do |item|
+    instance_arr = arr.map do |item| # rubocop:todo Lint/UselessAssignment
       Book.new(
         item['title'],
         item['author']

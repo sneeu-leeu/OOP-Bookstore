@@ -49,8 +49,6 @@ class App
     puts 'Do You Want To Create a Student (1) or a Teacher (2)'
     person_response = gets.chomp
 
-    new_person = nil
-
     case person_response
     when '1'
       new_person = Creator.student
