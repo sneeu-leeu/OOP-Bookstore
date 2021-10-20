@@ -1,15 +1,20 @@
 require_relative 'classroom'
 require_relative 'display'
 require_relative 'creator'
+require_relative 'inoutput'
 
 class App
   attr_accessor :people, :books, :displays, :rentals
 
   def initialize
+    @peopleIO = InOutPut.new("people.json")
+    @booksIO = InOutPut.new("books.json")
+    @rentalsIO = InOutPut.new("rentals.json")
+
     @people = []
     @books = []
-    @rentals = []
-    @displays = Display.new(@books, @rentals, @people)
+    @rental = []
+    @displays = Display.new(@books, @rental, @people)
   end
 
   def menu
@@ -27,19 +32,33 @@ class App
     puts
   end
 
+  def create_book
+    new_book = Creator.book
+    @books << new_book
+    @booksIO.write(new_book.to_hash)
+  end
+
   def create_rental
-    @rentals << Creator.rental(@books, @people)
+    new_rental = Creator.rental(@books, @people)
+    @rental << new_rental
+    @rentalsIO.write(new_rental.to_hash)
   end
 
   def create_person
     puts 'Do You Want To Create a Student (1) or a Teacher (2)'
     person_response = gets.chomp
 
+    new_person = nil
+
     case person_response
     when '1'
-      @people << Creator.student
+      new_person = Creator.student
+      @peopleIO.write(new_person.to_hash)
+      @people << new_person
     when '2'
-      @people << Creator.teacher
+      new_person = Creator.teacher
+      @peopleIO.write(new_person.to_hash)
+      @people << new_person
     else
       puts 'Please Choose 1 - Student or 2 - Teacher'
     end
