@@ -12,11 +12,11 @@ class Teacher < Person
 
   def to_hash
     {
-      "type" => 'Teacher',
-      "name" => @name,
-      "specialization" => @specialization,
-      "age" => @age,
-      "id" => @id
+      'type' => 'Teacher',
+      'name' => @name,
+      'specialization' => @specialization,
+      'age' => @age,
+      'id' => @id
     }
   end
 end

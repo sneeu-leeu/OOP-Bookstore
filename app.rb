@@ -8,9 +8,9 @@ class App
   attr_accessor :people, :books, :displays, :rentals
 
   def initialize
-    @peopleIO = InOutPut.new("people.json")
-    @booksIO = InOutPut.new("books.json")
-    @rentalsIO = InOutPut.new("rentals.json")
+    @peopleOI = InOutPut.new('people.json')
+    @booksIO = InOutPut.new('books.json')
+    @rentalsIO = InOutPut.new('rentals.json')
 
     @people = Convertor.people_h_to_ar @peopleIO.read
     @books = Convertor.hash_to_books_arr @booksIO.read
@@ -34,7 +34,6 @@ class App
   end
 
   def create_book
-    
     new_book = Creator.book
     @books << new_book
     @booksIO.write(new_book.to_hash)

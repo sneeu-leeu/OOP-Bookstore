@@ -15,7 +15,7 @@ class Creator
                           classroom: @classroom)
 
     puts "Student #{name_response} created succesfully"
-     
+
     student
   end
 
@@ -32,7 +32,7 @@ class Creator
     teacher = Teacher.new(age: age_response, name: name_response, specialization: specialization_response)
 
     puts "Teacher #{teacher.name} created successfully"
-  
+
     teacher
   end
 
@@ -45,7 +45,7 @@ class Creator
     book = Book.new(title, author)
 
     puts "Book: '#{book.title}' created successfully"
-     
+
     book
   end
 
