@@ -5,5 +5,12 @@
     "age": 0,
     "parent_permission": true,
     "id": 98
+  },
+  {
+    "type": "Student",
+    "name": "Johny",
+    "age": 15,
+    "parent_permission": true,
+    "id": 98
   }
 ]

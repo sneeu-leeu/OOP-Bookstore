@@ -2,6 +2,7 @@ require_relative 'classroom'
 require_relative 'display'
 require_relative 'creator'
 require_relative 'inoutput'
+require_relative 'convertor'
 
 class App
   attr_accessor :people, :books, :displays, :rentals
@@ -11,8 +12,8 @@ class App
     @booksIO = InOutPut.new("books.json")
     @rentalsIO = InOutPut.new("rentals.json")
 
-    @people = JSON.parse(@peopleIO.read()) || []
-    @books = []
+    @people = Convertor.people_h_to_ar @peopleIO.read
+    @books = Convertor.hash_to_books_arr @booksIO.read
     @rental = []
     @displays = Display.new(@books, @rental, @people)
   end

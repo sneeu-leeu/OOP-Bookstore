@@ -16,7 +16,7 @@ class Display
   end
 
   def people
-    @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, age: #{person.age}" }
+    @people.each { |person| puts "[#{person.class}] name: #{person.name}, ID: #{person.id}, age: #{person.age}" }
   end
 
   def rental
