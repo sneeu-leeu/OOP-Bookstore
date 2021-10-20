@@ -1,5 +1,6 @@
-require './teacher'
-require './student'
+require_relative 'teacher'
+require_relative 'student'
+require_relative 'book'
 
 class Convertor
  def self.people_h_to_ar(arr)
@@ -31,6 +32,16 @@ class Convertor
           item["author"]
         )
     end
+  end
+
+  def self.rentals_h_to_r(arr, _books, people)
+    i_arr = []
+    arr.each do |l|
+        people.each do |p|
+            i_arr << Rental.new(l["date"], Book.new(l['title'], l['author']), p) if l['person-id'] == p.id
+        end
+    end
+    i_arr
   end
 
 end

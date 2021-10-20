@@ -19,7 +19,7 @@ def main # rubocop:todo Metrics/CyclomaticComplexity, Metrics/MethodLength
     when '5'
       app.create_rental
     when '6'
-      app.displays.rentals
+      app.displays.rental
     when '7'
       puts 'Exit'
       return

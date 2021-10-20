@@ -14,7 +14,7 @@ class App
 
     @people = Convertor.people_h_to_ar @peopleIO.read
     @books = Convertor.hash_to_books_arr @booksIO.read
-    @rental = []
+    @rental = Convertor.rentals_h_to_r @rentalsIO.read, @books, @people
     @displays = Display.new(@books, @rental, @people)
   end
 
