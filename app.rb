@@ -11,7 +11,7 @@ class App
     @booksIO = InOutPut.new("books.json")
     @rentalsIO = InOutPut.new("rentals.json")
 
-    @people = []
+    @people = JSON.parse(@peopleIO.read()) || []
     @books = []
     @rental = []
     @displays = Display.new(@books, @rental, @people)
