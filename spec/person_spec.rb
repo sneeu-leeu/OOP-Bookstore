@@ -10,7 +10,7 @@ describe Person do
       end
 
       it 'should return name unknown' do
-        expect(person.name). to eql 'Unknown'
+        expect(person.name).to eql 'Unknown'
       end
     end
 
@@ -22,13 +22,12 @@ describe Person do
       end
 
       it 'should return name Andy' do
-        expect(person.name). to eql 'Andy'
+        expect(person.name).to eql 'Andy'
       end
 
       it 'should return age 23' do
-        expect(person.age). to eql 23
+        expect(person.age).to eql 23
       end
     end
   end
-  
 end
