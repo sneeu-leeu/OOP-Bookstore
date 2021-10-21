@@ -15,6 +15,7 @@ describe Student do
         expect(@student.classroom).to eql @classroom
       end
     end
+
     context '#play_hooky' do
       it `should return ¯\(ツ)/¯` do
         expect(@student.play_hooky).to eql "¯\(ツ)/¯"

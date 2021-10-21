@@ -1,7 +1,7 @@
 require_relative 'required_files'
 
-describe Rental do
-  describe '#instance' do
+describe Rental do # rubocop:todo Metrics/BlockLength
+  describe '#instance' do # rubocop:todo Metrics/BlockLength
     classroom = Classroom.new('Math')
     student = Student.new(age: 17, name: 'Ana', classroom: classroom)
     teacher = Teacher.new(age: 50, name: 'Jim', specialization: 'English')
