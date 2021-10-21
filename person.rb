@@ -3,8 +3,6 @@ require_relative 'corrector'
 class Person
   attr_accessor :name, :age, :rentals, :id
 
-  # attr_reader :id
-
   def initialize(age:, name: 'Unknown', parent_permission: true, id: 0)
     @id = id.eql?(0) ? Random.rand(1..100) : id
     @name = name
