@@ -14,7 +14,12 @@ describe Student do
              it 'should be in a correct classroom' do
                 expect(@student.classroom). to eql @classroom
              end
-        end     
+        end  
+        context "#play_hooky" do
+            it `should return ¯\(ツ)/¯` do
+                expect(@student.play_hooky).to eql "¯\(ツ)/¯"
+            end
+        end 
     end
   
 end
