@@ -8,10 +8,13 @@ describe Student do
     describe '#instance' do
         context 'When initialized with age and classroom' do
              it 'should return an instance of student' do
-            expect(@student).to be_an_instance_of Student
+                expect(@student).to be_an_instance_of Student
              end
-        end
-        
+
+             it 'should be in a correct classroom' do
+                expect(@student.classroom). to eql @classroom
+             end
+        end     
     end
   
 end
