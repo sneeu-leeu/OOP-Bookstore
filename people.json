@@ -1,1 +1,16 @@
-[{"type":"Teacher","name":"Ellis","specialization":"Meth","age":45,"id":36},{"type":"Student","name":"Johnson tiddies","age":14,"parent_permission":true,"id":33}]
+[
+  {
+    "type": "Student",
+    "name": "Caleb",
+    "age": 22,
+    "parent_permission": false,
+    "id": 40
+  },
+  {
+    "type": "Teacher",
+    "name": "stephan",
+    "specialization": "Math",
+    "age": 25,
+    "id": 69
+  }
+]
